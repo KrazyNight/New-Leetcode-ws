@@ -105,6 +105,39 @@
 // Note that if there are multiple occurrences of the same substring, every occurrence should be counted.
 // A substring is a contiguous sequence of characters in a string.
 
+//Yes
+//Yes
+//Yes
+//Yes
+//Yes
+//Yes
+//Yes correct
+
+// var countGoodSubstrings = function(s) {
+//     //s = "xyzzaz"
+//     goodCount = 0;
+//     //console.log(`s = ${s}, length = ${s.length}`)
+//     //create a for loop, sliding window length 3
+//     //no repeated characters, use a Set();
+//     for (let i = 0; i <= s.length - 3; i++) {
+//         const window = s.substring(i, i + 3);
+//         const charSet = new Set(window);
+//         //console.log(charSet);
+//         if (charSet.size === 3) {
+//             goodCount++;
+
+//         }
+//         //if () {}
+//     }
+//     //console.log(`${goodCount}`);
+//     return goodCount;
+
+
+
+
+
+// };
+
 //WHY IS THIS WRONG
 //FIX
 //FIX
