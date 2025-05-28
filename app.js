@@ -171,3 +171,88 @@
 //   }
 //   return countOfGoodSubstring;
 // };
+
+
+
+
+
+
+
+
+// LEETCODE: 424. Longest Repeating Character Replacement
+/** 
+You are given a string s and an integer k.
+You can choose any character of the string and change it to any other uppercase English character.
+You can perform this operation at most k times.
+Return the length of the longest substring containing the same letter you can get after performing the above operations.
+*/
+// Fix- Challenge
+// Fix- Challenge
+// Fix- Challenge
+// Fix- Challenge
+// Fix- Challenge
+// Fix- Challenge
+// Fix- Challenge
+// Fix- Challenge
+// Fix- Challenge
+//var characterReplacement = function(s, k) {
+    //Begin
+    //Create a FOR LOOP, sliding window
+    //sliding window has same chararacters, where you can add 2 more (k);
+//     s = "ABAB";
+//     k = 2;
+//     let l = 0;
+//     let maxLen = 0;
+//     let maxFreq = 0; //same letters count
+//     let dic = {}; //count dictionary
+
+//     for (let r = 0; r < s.length; r++) {
+//         c = s[r];
+//         dic[c] = (dic[c] || 0) + 1;
+//         maxFreq = Math.max(maxFreq, dic[c])
+//         if ((r - l + 1) - maxFreq > k) {
+//             s[l] -= 1;
+//             l++;
+//         }
+//         return maxLen += 1;
+//     }
+
+// //};
+
+
+/// correct Ans
+/// correct Ans
+/// correct Ans
+/// correct Ans
+/// correct Ans
+/// correct Ans
+/// correct Ans
+/// correct Ans
+// var characterReplacement = function(s, k) {
+//     //Begin
+//     //Create a FOR LOOP, sliding window
+//     //sliding window has same chararacters, where you can add 2 more (k);
+//     //s = "ABAB";
+//     //k = 2;
+//     let l = 0;
+//     let maxLen = 0;
+//     let maxFreq = 0; //same letters count
+//     let dic = {}; //count dictionary
+
+//     for (let r = 0; r < s.length; r++) {
+//         c = s[r];
+//         dic[c] = (dic[c] || 0) + 1;
+//         maxFreq = Math.max(maxFreq, dic[c]);
+//         while ((r - l + 1) - maxFreq > k) {
+//             dic[s[l]] -= 1;
+//             l++;
+//         }
+//         maxLen = Math.max(maxLen, r - l + 1);
+//     }
+//     return maxLen
+
+// };
+// console.log(`${characterReplacement}`)
+
+
+
