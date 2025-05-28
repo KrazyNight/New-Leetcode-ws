@@ -90,3 +90,51 @@
 //      return maxLen;
 
 // //};
+
+//new
+//new
+//new
+//new
+//new
+//new
+//new
+// LEETCODE : 1876. Substrings of Size Three with Distinct Characters
+
+// A string is good if there are no repeated characters.
+// Given a string s​​​​​, return the number of good substrings of length three in s​​​​​​.
+// Note that if there are multiple occurrences of the same substring, every occurrence should be counted.
+// A substring is a contiguous sequence of characters in a string.
+
+//WHY IS THIS WRONG
+//FIX
+//FIX
+//FIX
+//FIX
+//FIX
+//FIX
+
+// var countGoodSubstrings = function(s) {
+//   let l = 0;
+//   let dic = {};
+//   let countOfGoodSubstring = 0;
+
+//   for (let r = 0; r < s.length; r++) {
+//     const c = s[r];
+//     dic[c] = (dic[c] || 0) + 1;
+
+//     // If the current character is already in the window (duplicate)
+//     if (dic[c] > 1) {
+//       // Shrink the window until the duplicate is removed
+//       while (dic[c] > 1) {
+//         dic[s[l]]--;
+//         l++;
+//       }
+//     }
+
+//     // If the window size is 3 and all characters are distinct
+//     if (r - l + 1 === 3) {
+//       countOfGoodSubstring++;
+//     }
+//   }
+//   return countOfGoodSubstring;
+// };
