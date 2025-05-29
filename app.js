@@ -256,3 +256,143 @@ Return the length of the longest substring containing the same letter you can ge
 
 
 
+
+
+
+//LEETCODE 76. Minimum Window Substring
+/** 
+Given two strings s and t of lengths m and n respectively,
+return the minimum window substring of s such that every character 
+in t (including duplicates) is included in the window.
+If there is no such substring, return the empty string "".
+The testcases will be generated such that the answer is unique.
+*/
+
+
+// I don't know why it failes, 
+//Failed
+//Failed
+//Failed
+//Failed
+//Failed
+//Failed
+
+/** 
+var minWindow = function(s, t) {
+    if (s.length < t.length) return "";
+    // create a slidind window
+    // record only when all characters of string 't' that are in window
+    // keep track of minimum window
+    // If there is no such substring, return the empty string "".
+    const dicS = { };
+    const dicT = {};
+    let l = 0;
+    let r = 0;
+    let minLen = Infinity;
+    let minL = 0; //Keeps track of l index of the minimum window found so far.
+    //minL => minStart: Keeps track of the starting index of the minimum window found so far.
+    //when will i need it
+    let have = 0;  //Number of characters fully matched, (s,t)
+    let need = t.length //correct:  let need = Object.keys(dicT).length;
+    //let need = Object.keys(dicT).length;
+
+
+    for (let r of t) {
+        //"for...of" iterates over the values of an iterable object. 
+        //Iterating over characters in a string.
+        dicT[r] = (dicT[r] || 0) + 1; //auto rec. in dic, both key: value
+    };
+    // NOW I have the dic of the elements/character and Freq/ count
+
+
+    for (let r = 0; r < s.length; r++) {
+        let element = s[r];
+        dicS[element] = (dicS[element] || 0) + 1;
+        //return the minimum window substring of s such that every character in t (including duplicates) is included in the window. 
+
+        if (element in dicT && dicS[element] === dicT[element]) {
+            // ABOVE: && dicS[element] === dicT[element]
+            // it states if element/character 'value'/Freq/count are the same
+            have += 1;
+        }
+
+        // Step 4: When all characters are matched, try shrinking the window
+        // while have  == number of unique characters in t:
+        while (have === need) {
+            if((r - l + 1) < minLen) {
+                minLen = Math.min(minLen, r - l + 1);
+                minL = l;
+            }
+            dicS[s[l]] -= 1;
+            if (s[l] in dicT && dicS[s[l]] < dicT[s[l]]) {
+                have -= 1;
+            }
+            l++;
+        }
+
+    }
+    return minLen !== Infinity ? s.substring(l, r + 1) : "";
+    
+};
+*/
+
+
+
+// Succesful Failure
+// Succesful Failure
+// Succesful Failure
+// Succesful Failure
+// Succesful Failure
+// Succesful Failure
+// Succesful Failure
+// Succesful Failure
+/**
+ * LEETCODE 76.
+ 
+AI I Don't Understand this !!!!
+How to fix
+res = [l, r]; // i do know understan this code
+
+var minWindow = function(s, t) {
+    if (s.length < t.length) return "";
+
+        const dicT = {};
+        const dicS = {};
+        let have = 0; //Number of characters fully matched, (s,t)
+        let need = t.length; //correct:  let need = Object.keys(dicT).length;
+        let res = [-1, -1];
+        let minLen = Infinity;
+        let l = 0;
+
+        for (const c of t) {
+            dicT[c] = (dicT[c] || 0) + 1;
+        }
+
+
+        for (let r = 0; r < s.length; r++) {
+            const c = s[r];
+            dicS[c] = (dicS[c] || 0) + 1;
+
+            if (c in dicT && dicS[c] === dicT[c]) {
+                have++;
+            }
+
+            while (have === need) {
+                if (r - l + 1 < minLen) {
+                    res = [l, r]; // i do know understan this code
+                    minLen = r - l + 1;
+                }
+                dicS[s[l]]--;
+                if (s[l] in dicT && dicS[s[l]] < dicT[s[l]]) {
+                    have--;
+                }
+                l++;
+            }
+        }
+
+        l = res[0];
+        r = res[1];
+        return minLen !== Infinity ? s.substring(l, r + 1) : "";
+    
+};
+ */
