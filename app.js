@@ -396,3 +396,148 @@ var minWindow = function(s, t) {
     
 };
  */
+
+
+
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+// correct Ans
+
+
+// var minWindow = function (s, t) {
+//     if (t.length > s.length) return "";
+
+//     let tMap = new Map();
+//     let sMap = new Map();
+
+//     // Store frequency of characters in t; 
+//     for (let char of t) {
+//         /**
+//         "for...of" iterates over the values of an iterable object. 
+//         Iterating over characters in a string.
+//          */
+//         tMap.set(char, (tMap.get(char) || 0) + 1); // { a: 1, b: 1, c: 1 }
+//         /**
+//         Map objects:
+//         The .set() method is used to add or update key-value pairs in a Map object.
+//         */
+//     }
+
+//     let left = 0;
+//     let right = 0;
+//     let have = 0;    // How many characters matched, (s,t)
+//     let need = tMap.size; // Total unique characters in t      //   3
+//     let resRangeLR = [-1, -1]; //initial placeholder, 
+//     //result array could store the starting and ending indices of the range
+//     /**
+    
+//     let result = [-1, -1]; is typically used as an initial placeholder or default value for storing the result of a search or lookup operation where a pair of indices or positions are expected. 
+//     Here are some common scenarios where this code might be used:
+// Finding the first and last occurrence of an element:
+// In algorithms that search for the first and last position of a specific item within an array, the result array is initialized to [-1, -1]. If the element is not found, the result will remain [-1,-1], indicating that the element is absent. If found, the indices will be updated to the first and last position.
+
+// Range searches:
+// When searching for a range of values or a particular interval within an ordered collection, the result array could store the starting and ending indices of the range. If no such range is found, the initial [-1, -1] value remains.
+    
+//      */
+//     let minLength = Infinity;
+
+//     // >>>>>  // A D O B E C O D E B A N C
+//     while (right < s.length) {
+//         // Expand the window by adding s[right]
+//         let char = s[right];
+//         sMap.set(char, (sMap.get(char) || 0) + 1);
+
+//         //  >>>>> //  { a: 1, d: 0 , o: 0, b: 0, e: 0, c: 1, n: 1 }
+
+//         // If the current character count matches the required count, increase 'have'
+//         if (tMap.has(char) && sMap.get(char) === tMap.get(char)) {
+//             have++;
+//         }
+
+//         // Now try to shrink the window
+//         while (have === need) {
+//             // Update the resRangeLR if the current window is smaller
+//             if ((right - left + 1) < minLength) {
+//                 resRangeLR = [left, right];
+//                 minLength = (right - left + 1);
+//             }
+
+//             // Shrink the window from the left
+//             let leftChar = s[left];
+//             sMap.set(leftChar, sMap.get(leftChar) - 1); //this shrinks window
+//             if (tMap.has(leftChar) && sMap.get(leftChar) < tMap.get(leftChar)) {
+//                 have--;
+//             }
+//             left++; //this shrinks window, l pointer
+//         }
+//         right++; // this is added b/c r pointer need to iterate through s.length
+//         // 
+//     }
+
+//     // If no valid window is found
+//     if (resRangeLR[0] === -1) return "";
+
+//     // Return the minimum window substring
+//     return s.substring(resRangeLR[0], resRangeLR[1] + 1); 
+//     // range beg. w/ 0 index, so add + 1;
+
+// };
+/** 
+var minWindow = function (s, t) {
+    if (t.length > s.length) return "";
+
+    let tMap = new Map();
+    let sMap = new Map();
+
+    
+    for (let char of t) {       
+        tMap.set(char, (tMap.get(char) || 0) + 1);      
+    }
+
+    let left = 0;
+    let right = 0;
+    let have = 0;   
+    let need = tMap.size; 
+    let resRangeLR = [-1, -1];  
+    let minLength = Infinity;
+
+    while (right < s.length) {
+        let char = s[right];
+        sMap.set(char, (sMap.get(char) || 0) + 1);
+
+        if (tMap.has(char) && sMap.get(char) === tMap.get(char)) {
+            have++;
+        }
+        
+        while (have === need) {      
+
+            if ((right - left + 1) < minLength) {
+                resRangeLR = [left, right];
+                minLength = (right - left + 1);
+            }
+
+            let leftChar = s[left];
+            sMap.set(leftChar, sMap.get(leftChar) - 1); 
+
+            if (tMap.has(leftChar) && sMap.get(leftChar) < tMap.get(leftChar)) {
+                have--;
+            }
+            
+            left++; 
+        }
+        right++;   
+    }    
+    if (resRangeLR[0] === -1) return "";
+
+    return s.substring(resRangeLR[0], resRangeLR[1] + 1); 
+};
+*/
