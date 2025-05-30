@@ -558,4 +558,7 @@ var minWindow = function (s, t) {
     let tMap = new Map();
     let sMap = new Map();
 
+    for (let c of t) {
+        tMap.set(c, (tMap.get(c) || 0) + 1)
+    }
 };
