@@ -561,4 +561,13 @@ var minWindow = function (s, t) {
     for (let c of t) {
         tMap.set(c, (tMap.get(c) || 0) + 1)
     }
+
+    let left = 0;
+    let right = 0;
+    let have = 0;
+    let need = tMap.size;
+    let resRangeLR = [-1, -1];
+    let minLength = Infinity;
+    
+
 };
