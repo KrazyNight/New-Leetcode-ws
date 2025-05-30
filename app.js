@@ -568,6 +568,15 @@ var minWindow = function (s, t) {
     let need = tMap.size;
     let resRangeLR = [-1, -1];
     let minLength = Infinity;
-    
+
+    while (right < s.length) {
+        let char = s[right];
+        sMap.set(char, (sMap.get(char) || 0) + 1);
+        
+        if (tMap.has(char) && sMap.get(char) === tMap.get(char)) {
+            have++;
+        }
+    }
+
 
 };
