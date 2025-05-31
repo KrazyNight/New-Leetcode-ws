@@ -393,6 +393,7 @@ var minWindow = function(s, t) {
         l = res[0];
         r = res[1];
         return minLen !== Infinity ? s.substring(l, r + 1) : "";
+        return minLen !== Infinity ? s.substring(l, r + 1) : "";
     
 };
  */
@@ -555,28 +556,73 @@ The testcases will be generated such that the answer is unique.
 var minWindow = function (s, t) {
     if (s.length < t.length) return "";
 
-    let tMap = new Map();
+    //create a new Map, bc its a freq/counter 
     let sMap = new Map();
+    let tMap = new Map();
 
-    for (let c of t) {
-        tMap.set(c, (tMap.get(c) || 0) + 1)
-    }
+    for (let element of t ) {
+        tMap.set(element, (tMap.get(element) || 0) + 1)
+    };
 
-    let left = 0;
-    let right = 0;
+
+    let l = 0;
+    let r = 0;
+    let minLen = Infinity;
+    let resRangeLR = [-1, -1];
     let have = 0;
     let need = tMap.size;
-    let resRangeLR = [-1, -1];
-    let minLength = Infinity;
+    /**
+     *
+     */
 
-    while (right < s.length) {
-        let char = s[right];
-        sMap.set(char, (sMap.get(char) || 0) + 1);
-        
-        if (tMap.has(char) && sMap.get(char) === tMap.get(char)) {
+    while (r < s.length) {
+        const element = s[r];
+        sMap.set(element, (sMap.get(element) || 0) + 1);
+
+        //state when your 'have' will increase;
+        // how will it increase;
+        // sMap-element has to be in tMap; && 
+        //since ever element duplicate is included in the window
+        // the element value must be equal
+        if (tMap.has(element) && sMap.get(element) === tMap.get(element)) {
             have++;
-        }
-    }
+            //break; finished//
+        }    
+        //if elementL is not in tMap, and the element frequency doesn't match
+        //more your right poiter --r++
+
+        // when will you shrink your window, and allowed to shrink window
+        while (have === need) {
+            //How to update minLen, and reRangeLR
+            if ((r - l + 1) < minLen) {
+                resRangeLR = [l, r];
+                minLen = (r - l + 1);
+            }
 
 
+            //below is the shrinking
+            let elementL = s[l]
+            sMap.set(elementL, (sMap.get(elementL) || 0) - 1);
+
+            // don't forget to -- have,
+            //why does shrinking the window affect have?
+            //b/c the above already stated that 
+            //(wrong?) sMap.get(element) === tMap.get(element), ==> have++ (wrong)
+            // have === need
+            // so have---
+            if (tMap.has(elementL) && sMap.get(elementL) < tMap.get(elementL)) {
+                have--
+            }
+            // so now we
+            l++
+        } 
+        
+
+        r++
+    };
+    return minLen !== Infinity ? s.substring(resRangeLR[0], resRangeLR[1] + 1): "";
+
+
+
+    
 };
